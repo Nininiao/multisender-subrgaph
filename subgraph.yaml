@@ -1,0 +1,26 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Contract
+    network: mainnet
+    source:
+      address: "0xA5025FABA6E70B84F74e9b1113e5F7F4E7f4859f"
+      abi: Contract
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - ProxyOwnershipTransferred
+        - Upgraded
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: ProxyOwnershipTransferred(address,address)
+          handler: handleProxyOwnershipTransferred
+        - event: Upgraded(string,indexed address)
+          handler: handleUpgraded
+      file: ./src/mapping.ts

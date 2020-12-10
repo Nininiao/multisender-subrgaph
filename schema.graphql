@@ -1,0 +1,20 @@
+type ProxyOwnershipTransferred @entity {
+  "This entity represents Owner"
+  id: ID!
+  _owner: Bytes! 
+  "Owner address"
+  address: String!
+  proxyowner: Bytes!
+}
+type Upgraded @entity {
+  "This entity represents for upgraded version"
+  id: ID!
+  "Version"
+  address: String!
+}
+type ExampleEntity @entity {
+  id: ID!
+  count: BigInt!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+}
